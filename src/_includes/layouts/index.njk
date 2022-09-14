@@ -1,0 +1,34 @@
+<!doctype html>
+<html class="scroll-smooth" lang="{{ locale|default('ru') }}">
+	<head>
+		<meta charset="utf-8">
+		<link rel="dns-prefetch" href="https://identity.netlify.com">
+		<link rel="canonical" href="{{ site.rootUrl }}{{ page.url }}">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ envs.site.name }}</title>
+		<meta name="description" content="{{ description }}">
+		<meta name="keywords" content="{{ keywords }}">
+		<link rel="icon" type="image/svg+xml" href="{{ envs.site.faviconUrl | url }}">
+		<link rel="stylesheet" href="/@root/css/style.css"> {{ __slinkity.head | safe }}
+	</head>
+	<body
+		class="grid min-h-screen font-body body grid-cols-full grid-areas-layout grid-rows-a1a"
+		x-data="{
+			bodyLock : false,
+			scrollWidth: window.innerWidth - $refs.body.offsetWidth + 'px'
+		}"
+		:class="bodyLock ? 'overflow-hidden' : ''"
+		:style="bodyLock ? 'padding-right:' + scrollWidth : ''"
+		x-ref="body"
+	>
+		<div id="focusmenu" class="!absolute sr-only focus:not-sr-only" tabindex="0">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis vel laborum, aperiam laboriosam ea magni sint nam atque, quisquam dolore itaque possimus animi pariatur voluptatem, voluptate hic sunt provident necessitatibus!
+		</div>
+		{% include "partials/header/header.njk" %}
+		<main class="grid-in-main">
+			{{ content | safe }}
+		</main>
+		{% include "partials/footer/footer.njk" %}
+		<script type="module" src="/@root/js/app.js"></script>
+	</body>
+</html>
