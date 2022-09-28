@@ -1,0 +1,22 @@
+{% from "components/icon/icon.njk" import Icon %}
+
+{% macro modal( data, show, style, attr ) %}
+	<div
+	x-cloak
+	x-show="{{ show }}"
+	{% if data %}
+		x-data="{{ data }}"
+	{% endif %}
+	{% if attr %}
+		{{ attr|safe }}
+	{% endif %}
+	x-transition:enter-start="opacity-0 invisible"
+	x-transition:enter-end="opacity-100 visible"
+	x-transition:leave-start="opacity-100 visible"
+	x-transition:leave-end="opacity-0 invisible"
+	class="z-[200] top-0 left-0 w-screen transition-all h-screen duration-300 {% if style === 'white' %} fixed bg-white {% else %} flex items-center fixed cursor-pointer justify-center bg-black/30 {% endif %} overflow-y-auto overflow-x-hidden"
+	>
+		{{ caller() }}
+	</div>
+{% endmacro %}
+

@@ -1,0 +1,6 @@
+.footer-select.ss-main {
+	@apply max-w-[300px] mx-auto;
+	.footer-select .ss-single-selected {
+		@apply bg-transparent border-b border-white;
+	}
+}

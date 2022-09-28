@@ -1,0 +1,32 @@
+---
+layout: layouts/index.njk
+title: Новости
+permalink: /news/
+pageKey: News
+---
+{% from "components/select/select.njk" import select %}
+{% from "components/cards/cards.njk" import cardNews %}
+
+<section>
+	<div class="container px-4 mx-auto sm:px-8">
+		<h1 class="text-2xl font-semibold text-center text-true-v">Новости и анонсы</h1>
+		<div class="flex justify-center mt-8">
+			{{ select(
+				placeholder = "Выбрать город",
+				items = cities,
+				class="select"
+			) }}
+		</div>
+		<ul class="grid justify-center gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
+			{% for item in news %}
+				{{ cardNews(
+					img = item.img,
+					title = item.title,
+					date = item.date,
+					description = item.description,
+					url = item.link
+				) }}
+			{% endfor %}
+		</ul>
+	</div>
+</section>

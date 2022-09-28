@@ -1,0 +1,42 @@
+{% from "components/buttons/buttons.njk" import button %}
+{% macro breadCrumbs(items, product) %}
+<section {% if product %}x-data="refferer"{% endif %}>
+	<div class="container px-4 pt-5 pb-1 mx-auto sm:px-8">
+		<ul {% if product %}x-collapse x-show="!reffererLink"{% endif %} class="flex flex-wrap items-center text-xs text-black gap-x-1 max-w-max">
+			<li class="after:ml-1 after:content-['—'] group">
+				<a class="transition-all duration-300 group-hover:text-bondi-blue group-hover:underline" href="/">Главная</a>
+			</li>
+			{% for item in items %}
+				{% if not loop.last %}
+					<li
+						class="after:ml-1 after:content-['—'] group"
+					>
+						<a
+							{% if product and loop.length - 1 === loop.index %}x-ref="parent"{% endif %}
+							class="transition-all duration-300 group-hover:text-bondi-blue group-hover:underline"
+							href="{{ item.url | url }}"
+						>{{ item.title }}</a>
+					</li>
+				{% else %}
+					<li>
+						<span>{{ item.title }}</span>
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+		{% if product %}
+			{% call button(
+				style = "type-3",
+				type = "link",
+				class = "w-full p-2 mx-auto bg-white md:mx-0 max-w-max",
+				link = "#",
+				icon = "arrow-line",
+				iconLeft = true,
+				attr = "x-collapse x-cloak :href=\"reffererLink\" x-show=\"reffererLink\""
+			) %}
+				Назад к каталогу
+			{% endcall %}
+		{% endif %}
+	</div>
+</section>
+{% endmacro %}

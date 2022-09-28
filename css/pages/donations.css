@@ -1,0 +1,45 @@
+.select.ss-main {
+	@apply max-w-[300px] mx-auto;
+	.ss-single-selected {
+		@apply border-none bg-athens-gray;
+		.placeholder{
+			@apply justify-center text-black;
+			.ss-disabled{
+				@apply text-black border-none;
+			}
+		}
+		.ss-arrow {
+			@apply hidden;
+		}
+	}
+	.ss-content {
+		@apply left-0 px-2 text-white border-none rounded-2lg top-14 bg-blaze-orange;
+		.ss-search {
+			input {
+				@apply transition-all duration-300 outline-none border-athens-gray placeholder:text-white focus:outline-none focus-visible:border-white/80 focus:shadow-none bg-blaze-orange;
+			}
+		}
+	}
+	.ss-content.ss-open {
+		@apply p-1 py-2  max-w-[300px] w-full;
+	}
+	.ss-list {
+		@apply px-1 ;
+		.ss-option {
+			@apply transition-all duration-300 hover:text-blaze-orange hover:bg-white/80;
+		}
+		.ss-option.ss-disabled {
+			@apply text-blaze-orange bg-white/80;
+		}
+	}
+	.ss-list::-webkit-scrollbar {
+		@apply w-1.5 h-2;
+	}
+	.ss-list::-webkit-scrollbar-track,
+	::-webkit-scrollbar-corner {
+		@apply rounded-full bg-athens-gray;
+	}
+	.ss-list::-webkit-scrollbar-thumb {
+		@apply border-[2px] bg-blaze-orange border-athens-gray border-solid rounded-full;
+	}
+}

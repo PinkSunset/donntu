@@ -1,6 +1,7 @@
 _site/
 node_modules/
 package-lock.json
+yarn.lock
 .DS_Store
 mix-manifest.json
 .env

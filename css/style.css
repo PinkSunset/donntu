@@ -1,6 +1,7 @@
-@import "./fonts.css";
 @import "tailwindcss/base";
+@import "./global.css";
 @import "swiper/css/bundle";
-@import "./index.css";
+@import "/@root/node_modules/slim-select/dist/slimselect.min.css";
+@import "/@includes/components/select/select.css";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";

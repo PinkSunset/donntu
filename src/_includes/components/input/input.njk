@@ -1,0 +1,45 @@
+{% macro input(class, name, type, minlength, maxlength, attr, required, placeholder, invalidText) %}
+	<label class="relative group">
+		<input
+			type="{{ type|default('text') }}"
+			name="{{ name }}"
+			{% if placeholder %}
+				placeholder="{{ placeholder }}"
+			{% endif %}
+			{% if attr %}
+				{{ attr | safe }}
+			{% endif %}
+			{% if minlength %}
+				minlength="{{ minlength }}"
+			{% endif %}
+			{% if maxlength %}
+				maxlength="{{ maxlength }}"
+			{% endif %}
+			{% if required %}
+				{{ required }}
+			{% endif %}
+			class="{{ class }} peer placeholder:text-gray-chateau focus-visible:border-persian-blue transition-all duration-300 outline-none focus:outline-none border invalid:border-thunderbird border-gray-chateau px-4 py-3 rounded w-full"
+		>
+			<span class="absolute left-0 pl-4 text-xs text-transparent transition-all duration-300 -bottom-4 peer-invalid:text-thunderbird">{{ invalidText }}</span>
+	</label>
+{% endmacro %}
+
+
+{% macro inputRadio(attr, value, name, model) %}
+	<label>
+		<input
+			{% if attr %}
+				{{ attr | safe }}
+			{% endif %}
+			class="sr-only peer"
+			type="radio"
+			name="{{ name }}"
+			x-model="{{ model }}"
+			value="{{ value }}"
+		>
+		<span
+			class="block px-8 py-3 m-1 text-white transition-all duration-300 outline-none cursor-pointer focus:outline-none ring-2 ring-transparent peer-focus-visible:ring-true-v peer-checked:bg-black rounded-2lg peer-checked: bg-emerald hover:bg-blaze-orange"
+			x-text="'{{ value }} ₽'"
+		></span>
+	</label>
+{% endmacro %}

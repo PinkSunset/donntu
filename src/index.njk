@@ -1,5 +1,18 @@
 ---
-title: Пчелопарни
+title: Пища Жизни
 layout: layouts/index.njk
+styles:
+  - /@root/css/pages/index.css
+scripts:
+  - /@root/js/pages/index.js
 ---
+{% from "components/button/button.njk" import button %}
 
+{% include "partials/citys-info/citys-info.njk" %}
+{% include "partials/about-us/about-us.njk" %}
+{% include "partials/feed-people/feed-people.njk" %}
+{% include "partials/what-we-do/what-we-do.njk" %}
+{% include "partials/how-to-help/how-to-help.njk" %}
+{% include "partials/need-help/need-help.njk" %}
+{% include "partials/news/news.njk" %}
+{% include "partials/reviews/reviews.njk" %}

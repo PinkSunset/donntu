@@ -1,0 +1,59 @@
+{% from "components/icon/icon.njk" import Icon %}
+
+{% macro card(
+	username,
+	post,
+	phone,
+	mail,
+	avatar
+) %}
+	{% if username %}
+		<div class="min-w-[250px] mb-auto mx-auto text-center sm:text-left grid gap-y-2.5 sm:gap-y-5">
+			<div class="flex items-center justify-center sm:justify-self-start">
+			{% if avatar %}
+				<img class="bg-no-repeat w-[120px] rounded-full h-[120px]" src="{{ avatar }}" alt="{{ username }}">
+			{% else %}
+				<div class="w-[120px] rounded-full bg-blaze-orange h-[120px] font-bold text-white flex items-center justify-center text-4xl text-center">
+					{{ username|initials }}
+				</div>
+			{% endif %}
+			</div>
+			<span class="block text-lg font-semibold">{{ username }}</span>
+			{% if post %}
+				<span class="text-sm sm:text-base"> {{ post }}</span>
+			{% endif %}
+			{% if phone %}
+				{{ cardLink(
+					link = phone|toPhoneLink,
+					icon = "phone",
+					text = phone|toPhone
+				) }}
+			{% endif %}
+			{% if mail %}
+				{{ cardLink(
+					link = "mailto:" ~ mail,
+					icon = "mail",
+					text = mail
+				) }}
+			{% endif %}
+		</div>
+	{% endif %}
+{% endmacro %}
+
+{% macro cardLink(
+	link,
+	icon,
+	text
+) %}
+	<a class="grid items-center justify-center grid-cols-1a max-w-max gap-x-2 group focus:outline-none hover:opacity-75" href="mailtoo:{{ link }}">
+		<div class="relative flex items-center justify-center text-white rounded-full bg-blaze-orange w-7 h-7 sm:w-11 sm:h-11">
+			{{ Icon(
+				name = icon,
+				size = "w-4 h-4 sm:h-6 sm:w-6"
+			) }}
+		</div>
+		<span class="block text-base font-semibold underline transition-colors decoration-transparent group-focus-visible:decoration-blaze-orange sm:font-normal">{{ text }}</span>
+	</a>
+{% endmacro %}
+
+

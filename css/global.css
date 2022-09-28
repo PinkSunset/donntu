@@ -1,64 +1,41 @@
 @layer base {
+	[id] {
+		@apply scroll-mt-16 lg:scroll-mt-56
+	}
+
+	[x-cloak] {
+		@apply !hidden;
+	}
 	a,
 	label,
 	input,
 	button,
 	[role="button"] {
 		-webkit-tap-highlight-color: transparent;
-	}
-
-	input:-webkit-autofill,
-	input:-webkit-autofill:hover,
-	input:-webkit-autofill:focus,
-	textarea:-webkit-autofill,
-	textarea:-webkit-autofill:hover,
-	textarea:-webkit-autofill:focus,
-	select:-webkit-autofill,
-	select:-webkit-autofill:hover,
-	select:-webkit-autofill:focus {
-		@apply border border-white text-white shadow-[0_0_px_1000px_transparent] transition-colors delay-[5000s] duration-[0s] !bg-transparent;
-	}
-
-	.lozad {
-		@apply transition-all opacity-0;
-	}
-
-	.lozad[data-loaded="true"] {
-		@apply opacity-100;
-	}
-
-	[x-cloak],
-	.grecaptcha-badge {
-		@apply !hidden;
-	}
-
-	* {
-		scrollbar-color: theme(colors.seance) transparent;
-		scrollbar-width: thin;
-	}
-
-	::-webkit-scrollbar-button {
-		@apply hidden;
-	}
-
-	::-webkit-scrollbar-track,
-	::-webkit-scrollbar-corner {
-		@apply bg-transparent;
-	}
-
-	::-webkit-scrollbar-thumb {
-		@apply rounded-full bg-seance;
-	}
-
-	::-webkit-scrollbar {
-		@apply w-2 h-2;
-	}
-
-	::-webkit-resizer {
-		@apply hidden;
-	}
-
-	.body {
-		@apply bg-no-repeat bg-cod-gray bg-[position:45vw_top] bg-[length:55vw] overflow-x-hidden text-white bg-[url(/assets/icons/sota.svg)];
+		-moz-tap-highlight-color: transparent;
 	}
 }
+*::-webkit-scrollbar {
+	@apply w-2 h-2;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+	@apply bg-gray-200 rounded-full;
+}
+
+*::-webkit-scrollbar-thumb {
+	@apply border-[2px] border-gray-200 hover:bg-white border-solid rounded-full bg-blaze-orange;
+}
+
+*{
+	scrollbar-color: theme(colors.blaze-orange) theme(colors.athens-gray);
+	scrollbar-width: thin;
+
+}
+
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration { display: none; }

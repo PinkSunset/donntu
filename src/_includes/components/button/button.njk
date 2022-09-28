@@ -1,0 +1,68 @@
+{% from "components/icon/icon.njk" import Icon %}
+
+{% macro button(
+	type,
+	click,
+	attr,
+	class,
+	bg,
+	style,
+	size,
+	theme,
+	icon,
+	iconLeft,
+	link,
+	target,
+	hideText,
+	xText
+) %}
+	<{{ 'a' if link else 'button' }}
+		{{ 'href=' ~ link if link }}
+		{% if click %}
+			@click="{{ click }}"
+		{% endif %}
+		{{ 'target=' ~ target if link and target }}
+		{{ attr|safe }}
+		class="
+			{{ class }}
+			rounded-full text-base
+			grid grid-flow-col gap-x-2 items-center outline-none font-semibold shadow-black focus:outline-none justify-center transition-all duration-300 ring-1 px-11
+			{% if style === "orange"%}
+				bg-white text-blaze-orange ring-white focus-visible:bg-atomic-tangerine focus-visible:text-white hover:shadow-2xl hover:shadow-white hover:bg-atomic-tangerine disabled:text-white/50 active:bg-black active:text-white active:shadow-none
+			{% elif style === "black" %}
+				text-white bg-black ring-white active:ring-blaze-orange active:bg-blaze-orange active:text-white focus-visible:text-atomic-tangerine focus-visible:ring-atomic-tangerine hover:text-black hover:bg-white hover:ring-white disabled:bg-emperor disabled:ring-emperor disabled:text-white/50
+			{% else %}
+				text-blaze-orange ring-blaze-orange focus-visible:text-white focus-visible:bg-blaze-orange hover:text-white hover:bg-blaze-orange
+			{% endif %}
+			{% if size=='small' %}
+				p-0.5 text-xs
+			{% elif size=='big' %}
+				p-4 text-lg
+			{% else %}
+				p-1.5 text-base
+			{% endif %}
+			{% set defaultSize = 'h-10' %}
+			{{ 'h-8' if size=='small' else defaultSize }}
+			{{ 'h-12' if size=='big' else defaultSize }}
+		"
+	>
+			{% set iconSize = 'h-6 w-6' %}
+			{{'w-6 h-6' if iconSize=='phone' }}
+			{{ 'w-7 h-7' if iconSize=='desktop' }}
+		<span class="
+			{{'sr-only' if hideText else 'empty:hidden'}}
+		"
+		{% if xText %}x-text="{{ xText }}"{% endif %}>
+
+			{{ hideText if hideText else caller() }}
+		</span>
+
+		{% if iconLeft!=true and icon %}
+			{{ Icon(
+				name = icon,
+				size = iconSize
+			) }}
+		{% endif %}
+	</{{ 'a' if link else 'button' }}>
+{% endmacro %}
+

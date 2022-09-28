@@ -1,14 +1,4 @@
 {
-  "broker_id": "00",
-  "body": {
-    "code": "test"
-  },
-  "roibeeApi": true,
-  "city": "Донецк",
-  "name": "Roibee",
-  "wmid": "00000",
-  "department": "Donetsk",
-  "api": "",
-  "faviconUrl": "/assets/icons/favicon.svg",
-  "source_id": "000"
+  "domain": "https://evosiz.ru",
+  "faviconUrl": "/assets/icons/favicon.ico"
 }

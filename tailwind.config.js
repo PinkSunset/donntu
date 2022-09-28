@@ -1,88 +1,88 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  content: ['./src/**/*.{md,njk,vue}'],
-  theme: {
+content: ['./src/**/*.{htm,md,njk}'],
+theme: {
     screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
+	sm: '640px',
+	md: '768px',
+	lg: '1024px',
+	xl: '1280px',
     },
     extend: {
-      fontFamily: {
-        body: ['Montserrat', ...defaultTheme.fontFamily.sans],
-      },
-      letterSpacing: {
-        normal:'0.145em',
-      },
-      borderRadius: {
-        '1.5xl' : '10px',
-        '4xl' : '32px',
-      },
-      backgroundSize: {
+	boxShadow: {
+		'rounded': '0px 0px 15px 0px rgba(0, 0, 0, 0.3)'
+	},
+	fontFamily: {
+		body: ['GolosText', ...defaultTheme.fontFamily.sans],
+	},
+	letterSpacing: {
+	},
+	borderRadius: {
+		'2lg': '10px',
+	},
+	backgroundSize: {
+	},
+	maxWidth: {
         '1/2': '50%',
-      },
-      maxWidth: {
-        '1/2': '50%',
-      },
-      colors: {
-        inherit: 'inherit',
-        'cod-gray': '#181818',
-        'medium-purple': '#6B68E0',
-        'medium-purple-2': '#6C6AE4',
-        'seance': '#781493',
-        'seance-2': '#7A1294',
-        'blue-ribbon' : '#4838FF',
-        'electric-violet' : '#B510EF',
-        'electric-violet-2' : '#704BFF',
-        'bright-sun' :'#FFCA42',
-        'silver' : '#CCCCCC',
-        'heliotrope' : '#DC56FF',
-        'mine-shaft' : '#2F2F2F',
-        'malibu' : '#53CFFF',
-        'dodger-blue' : '#3777FF',
-        'porcelain':'#ECEDEE',
-        'heliotrope':'#AC5FFF',
-      },
-      gridTemplateAreas: {
-        'layout': [
-          'header',
-          'main',
-          'footer',
-        ],
-      },
-      gridTemplateRows: {
-        'aa1': 'repeat(2, auto) 1fr',
-        'a1': 'auto 1fr',
-        '1a': '1fr auto',
-        '1a1': '1fr auto 1fr',
-        'a1a': 'auto 1fr auto',
-        '1aa': '1fr repeat(2, auto)',
-        'full': '100%',
-      },
-      gridTemplateColumns: {
-        'aa1': 'repeat(2, auto) 1fr',
-        'a1': 'auto 1fr',
-        '1a': '1fr auto',
-        '1a1': '1fr auto 1fr',
-        'a1a': 'auto 1fr auto',
-        '1aa': '1fr repeat(2, auto)',
-        'full': '100%',
-      },
-      textShadow: {
-        'base' : '0px 0px 4px rgba(255, 255, 255, 0.25)'
-      },
-      boxShadow: {
-        'purp': '0px 0px 3px rgb(120, 20, 147)',
-        'fiol': '0px 0px 6px rgb(107, 104, 224)',
-        'black': '0px 0px 13px rgb(0, 0, 0)',
-      },
     },
-  },
-  plugins: [
+	colors: {
+        inherit: 'inherit',
+		'blaze-orange' : '#FF6B00',
+		'selective-yellow' : '#FFBA0A',
+		'karry' : '#FFE9D9',
+		'emperor' : '#555555',
+		'gallery' : '#EAEAEA',
+		'athens-gray' : '#F3F4F7',
+		'true-v' : '#7656D2',
+		'link-water' : '#EBE6F8',
+		'pastel-green' : '#65E462',
+		'emerald' : '#51D74E',
+		'atomic-tangerine' : '#FFA15E',
+		'silver' : '#C4C4C4',
+		'mine-shaft' : '#3F3F3F',
+		'mine-shaft-1' : '#333333',
+		'purple-heart' : '#4D27BB',
+		'silver': '#BFBFBF',
+		'gray-chateau' : '#9CA3AF',
+		'persian-blue' : '#1E40AF',
+		'thunderbird' : '#B91C1C'
+	},
+	gridTemplateAreas: {
+        'layout': [
+		'header',
+		'main',
+		'footer',
+        ],
+	},
+	gridTemplateRows: {
+        'aa1': 'repeat(2, auto) 1fr',
+        'a1': 'auto 1fr',
+        '1a': '1fr auto',
+        '1a1': '1fr auto 1fr',
+		'a11': 'auto 1fr 1fr',
+		'11a': '1fr 1fr auto',
+        'a1a': 'auto 1fr auto',
+        '1aa': '1fr repeat(2, auto)',
+		'a1aa': 'auto 1fr repeat(2, auto)',
+        'full': '100%',
+	},
+	gridTemplateColumns: {
+        'aa1': 'repeat(2, auto) 1fr',
+        'a1': 'auto 1fr',
+        '1a': '1fr auto',
+        '1a1': '1fr auto 1fr',
+		'a11': 'auto 1fr 1fr',
+		'11a': '1fr 1fr auto',
+        'a1a': 'auto 1fr auto',
+        '1aa': '1fr repeat(2, auto)',
+		'a1aa': 'auto 1fr repeat(2, auto)',
+        'full': '100%',
+    },
+	},
+},
+plugins: [
     require('@tailwindcss/typography'),
-    require('@savvywombat/tailwindcss-grid-areas'),
-    require('tailwindcss-textshadow')
-  ],
+    require('@savvywombat/tailwindcss-grid-areas')
+],
 }

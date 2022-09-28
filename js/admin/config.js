@@ -1,19 +1,28 @@
-import { blog } from '../admin/preview-templates/post.js'
-import { pages } from '../admin/preview-templates/page.js'
-import { lists } from '../admin/configs/lists.js'
-
 const config = {
 	"backend": {
-		name: "github",
-		repo: "devcustrom/eleventy-roibee",
-		branch: "master"
+		"name": "gitlab",
+		"repo": "devcustrom/evosiz",
+		"branch": process.env.BRANCHDATA || "main",
+		"auth_type": "pkce",
+		"app_id": process.env.APPID,
+		"commit_messages": {
+			"create": 'Создано {{collection}} “{{slug}}”',
+			"update": 'Обновлено {{collection}} “{{slug}}”',
+			"delete": 'Удалено {{collection}} “{{slug}}”'
+		}
 	},
-	load_config_file: false,
-	"media_folder": "src/assets/images",
+	"locale": "ru",
+	"load_config_file": false,
+	"media_folder": "public/images",
+	"media_library": {
+		"name": "cloudinary",
+		"config": {
+			"cloud_name": process.env.CLOUDINARY_NAME,
+			"api_key": process.env.CLOUDINARY_KEY
+		}
+	},
 	"collections": [
-		blog,
-		pages,
-		lists,
+
 	]
 }
 

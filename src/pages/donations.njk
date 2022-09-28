@@ -1,0 +1,122 @@
+---
+layout: layouts/index.njk
+title: Пожертвования
+permalink: /donations/
+pageKey: donations
+scripts:
+  - /@root/js/pages/donations.js
+---
+{% from "components/button/button.njk" import button %}
+{% from "components/icon/icon.njk" import Icon %}
+{% from "components/input/input.njk" import input, inputRadio %}
+{% from "components/select/select.njk" import select %}
+{# {% from "components/breadcrumbs/breadcrumbs.njk" import breadcrumbs %} #}
+
+{% set numbers = [
+	"300",
+	"500",
+	"1000",
+	"2000",
+	"3000",
+	"4000",
+	"5000"
+] %}
+
+<section
+>
+	<div class="container px-4 mx-auto sm:px-8">
+		<h1 class="mb-8 text-2xl font-semibold text-center text-true-v">Сделать пожертвование</h1>
+		<div class="max-w-[900px] mx-auto">
+			<form
+				x-data="donatForm"
+				x-ref="form"
+				@submit.prevent="submit"
+				class="w-full py-6 sm:shadow-lg sm:rounded-2lg"
+			>
+				<fieldset
+					x-show="!sent"
+					x-transition:enter="opacity-0 invisible max-h-0"
+					x-transition:leave="opacity-0 invisible max-h-0"
+				>
+					<div class="grid gap-y-8">
+						<p class="text-lg font-semibold text-center">Денежное пожертвование</p>
+						{{ select(
+							name = "entry.1479007578",
+							placeholder = "Выбрать город",
+							items = cities
+						) }}
+					</div>
+					<fieldset class="mt-8">
+						<fieldset class="max-w-[300px] grid gap-y-5 mx-auto">
+							{{ input(
+								attr="@input=\"$el.value = $el.value.replace(/([0-9])/g, '')\"",
+								name="entry.1781081899",
+								placeholder="Ваше имя",
+								minlength="2",
+								invalidText="Введите имя"
+							) }}
+							{{ input(
+								placeholder="E-mail",
+								type="mail",
+								name="entry.1191346219",
+								maxlength="64",
+								invalidText="Некорректный E-mail"
+							) }}
+							{{ input(
+								placeholder="Телефон",
+								type="tel",
+								name="entry.1603979520",
+								maxlength="16",
+								minlength="16",
+								attr="
+									x-mask=\"+7(999)999-99-99\"
+								",
+								invalidText="Некорректный номер"
+							) }}
+						</fieldset>
+						<fieldset class="mx-auto mt-8 text-center">
+							<span>Минимальная сумма пожертвования - <span class="text-true-v">100 рублей</span></span>
+							<label class="mt-5 grid grid-cols-1a max-w-[320px] sm:max-w-max mx-auto items-center gap-x-2.5">
+								<output
+									class="h-12 flex items-center justify-center rounded outline-none focus:outline-none sm:w-[300px] bg-athens-gray"
+									x-text="sum"
+								>
+								</output>
+								<span>₽</span>
+							</label>
+						</fieldset>
+						<fieldset class="max-w-[500px] justify-center mt-8 p-2.5 flex flex-wrap mx-auto">
+							{% for item in numbers %}
+								{{ inputRadio(
+									value = item,
+									model = "sum",
+									name = "entry.1363929651"
+								) }}
+							{% endfor %}
+						</fieldset>
+						{% call button(
+							icon="like",
+							type="submit",
+							style="orange",
+							attr = "
+								x-ref='button'
+							",
+							class="mt-8 max-w-[240px] mx-auto"
+						) %}
+							Пожертвовать
+						{% endcall %}
+					</fieldset>
+				</fieldset>
+				<div
+					x-collapse
+					x-show="sent"
+					x-transition:enter="opacity-0 invisible max-h-0"
+					x-transition:leave="opacity-0 invisible max-h-0"
+					class="max-h-full text-center"
+				>
+					<p x-html="message"></p>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>

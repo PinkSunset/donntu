@@ -1,0 +1,99 @@
+{% from "components/button/button.njk" import button %}
+{% from "components/icon/icon.njk" import Icon %}
+
+{% macro slider(items, name, vertical) %}
+	<section
+		x-data="{
+			activeSlide: 1,
+			list: [
+				{% for item in items %}
+					{
+						title: '{{ item.title }}',
+						index: {{ loop.index }}
+					},
+				{% endfor %}
+			]
+		}"
+	>
+		<div class="container w-full px-4 mx-auto sm:px-8">
+			<p class="mx-auto mb-6 text-2xl font-semibold text-true-v max-w-max">{{ name }}</p>
+			<div class="grid grid-cols-full {{ 'sm:grid-cols-a1' if not vertical }} gap-4">
+				<div class="hidden w-full sm:block {% if vertical %} py-1 swiper sliders {% endif %}">
+					<ul class="{% if vertical %} swiper-wrapper mx-auto max-w-max {% else %} grid  gap-2.5 {% endif %} w-full">
+						{% for item in items %}
+							<li class="{% if vertical %} swiper-slide w-auto {% else %} w-full {% endif %}">
+								{% call button(
+									class="w-full ring-blaze-orange text-blaze-orange focus-vi",
+									click="activeSlide = " ~ loop.index,
+									attr="
+										:class=\"activeSlide === " ~ loop.index ~ " ? 'bg-blaze-orange !text-white' : ''\"
+									"
+								) %}
+									{{ item.title }}
+								{% endcall %}
+							</li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="grid items-center mb-4 grid-cols-a1a sm:hidden">
+					<button
+						@click="activeSlide -= 1"
+						:disabled="activeSlide === 1"
+						class="p-1 transition-all duration-300 rotate-180 rounded-full outline-none focus:ourline-none focus-visible:text-blaze-orange focus-visible:ring-blaze-orange ring-2 ring-transparent disabled:text-mine-shaft/60 text-mine-shaft max-w-max"
+					>
+						{{ Icon(
+							name="arrow",
+							size="w-6 h-6"
+						) }}
+					</button>
+						<p
+							class="text-lg font-semibold text-center text-blaze-orange"
+							x-text="list.find(i => i.index === activeSlide).title"
+						></p>
+					<button
+						@click="activeSlide += 1"
+						:disabled="activeSlide === list.length"
+						class="p-1 transition-all duration-300 rounded-full outline-none focus:ourline-none focus-visible:text-blaze-orange focus-visible:ring-blaze-orange ring-2 ring-transparent disabled:text-mine-shaft/60 text-mine-shaft max-w-max"
+					>
+						{{ Icon(
+							name="arrow",
+							size="w-6 h-6"
+						) }}
+					</button>
+				</div>
+				<div class="w-full p-3 bg-athens-gray lg:min-h-[540px] lg:p-6 rounded-2lg">
+					{% for item in items %}
+						<div
+							x-cloak
+							x-data="{ fullAbout: false }"
+							x-show="activeSlide === {{ loop.index }}"
+							x-transition:enter="hidden"
+							x-transition:leave="opacity-0 invisible"
+							class="grid w-full h-full gap-6 transition-all duration-300 lg:grid-rows-1 grid-rows-1a lg:grid-cols-[35%,1fr] gap-x-6"
+						>
+							<div class="max-h-[500px] text-scroll hidden lg:block overflow-y-auto">
+								{{ item.text }}
+							</div>
+							<div
+								x-show="fullAbout"
+								x-collapse.min.100px
+								class="relative h-full row-start-2 overflow-hidden prose transition-all duration-300 lg:hidden lg:row-auto"
+							>
+								{{ item.text }}
+								<div class="absolute left-0 w-full h-5 -bottom-1 bg-gradient-to-t from-athens-gray/80"></div>
+							</div>
+							{% call button(
+								style="black",
+								class="w-full mx-auto lg:hidden max-w-max sm:max-w-none sm:w-auto",
+								click="fullAbout = !fullAbout",
+								xText="fullAbout ? 'Свернуть' : 'Подробнее'"
+							) %}
+							{% endcall %}
+							<div class="w-full row-start-1 sm:min-h-[200px] bg-center max-h-[300px] sm:max-h-[none]  {% if vertical %} aspect-[2/1] {% else %} aspect-square {% endif %} bg-no-repeat bg-cover lg:row-auto rounded-2lg" style="background-image: url('{{ item.img }}')"></div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endmacro %}
