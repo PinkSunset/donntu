@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+	<symbol id="burger" viewBox="0 0 21 15" fill="none"><path d="M19.14 1H1M19.14 7.055H6.132M19.14 13.05H1" stroke="#fff" stroke-width="2" stroke-linecap="round"/></symbol>
+	<symbol id="logo" viewBox="0 0 180 54" fill="none">
+		<g clip-path="url(#clip0_0_3)">
+		<path d="M58.3611 2.0294L69.1238 3.72503L62.6487 48.7504C62.3632 50.7357 60.5255 52.0921 58.5442 51.78V51.78C54.5815 51.1557 51.832 47.4306 52.403 43.4599L58.3611 2.0294Z" fill="currentColor"/>
+		<path d="M0 0L69.2614 0V2.39194C69.2614 7.3625 65.2319 11.3919 60.2614 11.3919H10C4.47715 11.3919 0 6.91479 0 1.39194L0 0Z" fill="currentColor"/>
+		<path d="M19.2491 52.0607C19.2491 45.7691 24.3494 40.6687 30.641 40.6687L62.7848 40.6687L62.7848 47.0607C62.7848 49.8221 60.5462 52.0607 57.7848 52.0607L19.2491 52.0607V52.0607Z" fill="currentColor"/>
+		<path d="M22.4343 26.9264L33.1182 29.1001L30.4848 43.2805C29.3853 49.2007 23.7106 53.0268 17.8101 51.8263V51.8263L22.4343 26.9264Z" fill="currentColor"/>
+		<path d="M5.93668 31.0689C5.93668 24.7773 11.037 19.677 17.3286 19.677H44.9547V31.0689H5.93668V31.0689Z" fill="currentColor"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M125.491 2.20476C119.314 1.23162 113.586 5.46015 112.695 11.6494L106.86 52.2243H118.298L125.491 2.20476Z" fill="currentColor"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M133.185 2.07126L125.66 52.8172H137.009L144.533 2.07126H133.185Z" fill="currentColor"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M168.651 2.07126L161.28 51.7816H172.629L180 2.07126H168.651Z" fill="currentColor"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M136.839 52.8172H133.476L127.639 47.3763L168.612 2.07126L176.274 9.21342L136.839 52.8172Z" fill="currentColor"/>
+		<path d="M77.1769 6.03563C77.1769 3.27421 79.4155 1.03563 82.1769 1.03563H125.66V1.03563C125.66 7.32722 120.56 12.4276 114.268 12.4276H77.1769V6.03563Z" fill="currentColor"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M75.6237 6.97454C76.0954 3.69457 79.1314 1.45369 82.4047 1.9694L87.2405 2.73127L80.1866 51.7816H80.1453H72.293H69.1801L75.6237 6.97454Z" fill="currentColor"/>
+		</g>
+		<defs>
+		<clipPath id="clip0_0_3">
+		<rect width="180" height="54" fill="white"/>
+		</clipPath>
+		</defs>
+	</symbol>
+
+</svg>
